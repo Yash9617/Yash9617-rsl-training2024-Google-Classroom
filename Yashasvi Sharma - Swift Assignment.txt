@@ -1,0 +1,82 @@
+﻿Assignment Answers
+
+
+1.  A set is a collection of unique data. That is, elements of a set cannot be duplicate. Suppose we want to store information about student IDs. Since student IDs cannot be duplicate, we can use a set.
+var studentID : Set = [112, 114, 115, 118, 116]
+
+
+Add Elements to a Set:
+studentID.insert(119)
+
+
+Remove elements from set
+studentID.remove(112)
+
+
+2. Range operator is used to define a series of values between two intervals.
+For ex. for i in range 1…4 will define range of numeric values as 1, 2, 3, 4
+Types of Range in Swift
+
+
+In Swift, there are three types of range:
+
+
+Closed Range - will define both intervals ex. 1...4
+Half-Open Range - will exclude upper bound interval 1..<4
+One-Sided Range - will include elements to a particular interval ..<2
+
+
+3. let string1 = ""
+let string2 = ""
+print(string1.isEmpty && string2.isEmpty ? "none" : "\(string1) \(string2)")
+
+
+4. let arr = [6, 8, 1, 25, 65, 14, 2, 1, 6, 6, 8]
+var set: Set<Int> = []
+var x = -1
+for value in arr {
+   x = value
+ if !set.contains(value) {
+     print(value, terminator: " ")
+        set.insert(value)
+   }
+}
+5. let elements = [6, 8, 1, 25, 65, 14, 2, 1, 6, 6, 8]
+var even = [Int]()
+var odd = [Int]()
+for number in elements {
+    switch number % 2 {
+    case 0:
+        even.append(number)
+    default:
+        odd.append(number)
+    }
+}
+print("Odd Numbers: \(odd)")
+print("Even Numbers: \(even)")
+6. var arr1 = [2, 4, 1, 5, 1, 8, 6, 4]
+let x = 0, y = 2, z = 4
+var sum = 0
+if x == 0 {
+    for num in y...z {
+        sum += arr1[num]
+    }
+    print(sum)
+} else {
+    arr1[y] = z
+    print(arr1)
+}
+7. let arr2: Array<String> = ["Ranbir", "Ranveer", "Ajay", "Varun", "Akshay", "Navneet"]
+var dict: Dictionary<Character, [String]> = [Character: [String]]()
+for value in arr2 {
+    let firstLetter = value.first ?? " "
+    if var list = dict[firstLetter] {
+        list.append(value)
+        dict[firstLetter] = list
+    } else {
+        dict[firstLetter] = [value]
+    }
+}
+
+
+print(dict)

@@ -1,0 +1,102 @@
+﻿Swift Part2 Answers
+
+
+1. Structs is a custom data type which provides properties for storage of data. It is value based data type, meaning the copy of the original struct will not hold the reference to the old value and if we change the value of copy it won’t affect the original value, whereas classes are reference types data type.
+Classes are complex and have additional functionalities like inheritance, type casting and deinitializers. For basic object functionalities we can use struct.
+2. func getOddAndEvenSum(arr:[Int]) -> (oddValue: Int, evenValue: Int) {
+    var even = 0, odd = 0
+    for val in arr {
+        if val % 2 == 0 {
+            even += val
+        } else {
+            odd += val
+        }
+    }
+    return (oddValue: odd, evenValue: even)
+}
+
+
+let elements = [6, 8, 1, 25, 65, 14, 2, 1, 6, 6, 8]
+let oddAndEvenSum = getOddAndEvenSum(arr: elements)
+print("OddSum: \(oddAndEvenSum.oddValue) EvenSum: \(oddAndEvenSum.evenValue)")
+
+
+3. func sum(of anyTypeData: Any...) -> Int {
+    var sum: Int = 0
+    for number in anyTypeData {
+        switch number {
+        case is Int:
+            if let num = number as? Int {
+                if num == 0 {
+                    sum -= 10
+                } else {
+                    sum += num
+                }
+            }
+        case is String:
+            if let string = number as? String {
+                if string.isEmpty {
+                    sum -= 10
+                } else if (!string.contains("-")) {
+                    let pos = Int(string) ?? 0
+                    sum += pos
+                }
+            }
+        default:
+            sum += 0
+        }
+    }
+    return sum
+}
+
+
+print(sum(of: "10",10.8,10, "a number", -2, ""))
+
+
+4. func combineString(of params: String...) {
+    var string = ""
+    for param in params {
+        if !param.isEmpty {
+            string.append("\(param) ")
+        }
+    }
+    if string.isEmpty {
+        print("none")
+    } else {
+        print(string)
+    }
+}
+
+
+combineString(of: "Hi", "My", "Name","Is","Yash")
+
+
+5. var arr = [5, 2, 3, 4]
+
+
+extension Array {
+    mutating func moveElementToBackFromIndex(index: Int) -> Array {
+        for i in index..<self.count - 1 {
+            let temp = self[i]
+            self[i] = self[i+1]
+            self[i+1] = temp
+        }
+        return self
+    }
+}
+
+
+print(arr.moveElementToBackFromIndex(index: 1))
+
+
+7. class Queue<T> {
+    var elements: [T] = []
+    
+    func enqueue(_ element: T) {
+        elements.append(element)
+    }
+    
+    func size() -> Int {
+        elements.count
+    }
+}

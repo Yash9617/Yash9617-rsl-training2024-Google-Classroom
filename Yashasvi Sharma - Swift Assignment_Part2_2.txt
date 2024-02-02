@@ -1,0 +1,82 @@
+Swift Part2_2 Answers
+
+
+1. Static functions
+    a. Can be associated with a class, struct, or enum.
+    b. Defined by static keyword.
+    c. Can not be overridden in the subclass.
+    d. Can not access self properties
+  Class functions
+    a. Can be associated with class only.
+    b. Defined by class keyword.
+    c. Can be overridden in the subclass.
+    d. Can access self properties.
+      
+2.   enum Size {
+       case Small
+       case Medium
+       case Large
+     }
+
+     enum Menu {
+       case Burger(numberOfPatties: Int = 1)
+       case Fries(size: Size)
+       case Meal
+       case Coke
+     }
+
+     func printOrderedItems(_ orderedItems:[Menu]) {
+        for item in orderedItems {
+           switch item {
+              case .Burger(let patties):
+                print("Burger with \(patties) patties")
+              case .Fries(let size):
+                print("\(size) fries")
+              case .Coke:
+                print(Menu.Coke)
+              default:
+                print(Menu.Meal)
+                print(Menu.Coke)
+              }
+           }
+        }
+
+
+3. struct Person {
+      var firstName: String
+      var middleName: String
+      var lastName: String
+      var age: Int
+    }
+
+
+  extension Person {
+     func fullName() -> String {
+        return ("\(self.firstName) \(self.middleName) \(self.lastName)")
+     }
+  }
+
+
+  let person = Person(firstName: "Dinesh", middleName: "Kumar", lastName: "Sharma", age:      59)
+  print(person.fullName())
+
+
+4. struct Stack {
+    var arr: Array<Int> = [Int]()
+    
+    mutating func push(_ item: Int) {
+        arr.insert(item, at: 0)
+    }
+    
+    mutating func pop() -> [Int?] {
+        if arr.count < 1 {
+            return [nil]
+        }
+        arr.removeFirst()
+        return arr
+    }
+}
+var stack = Stack(arr: [1, 5, 8, 10, 12])
+stack.push(4)
+print(stack)
+print(stack.pop())

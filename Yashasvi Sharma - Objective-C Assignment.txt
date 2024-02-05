@@ -1,0 +1,243 @@
+﻿Objective C Assignment Answers
+
+
+1. a. - (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    NSInteger num1 = 2;
+    NSInteger num2 = 3;
+    NSLog(@"Sum of %ld and %ld is %ld",(long)num1,(long)num2,[self sumWith:num1 number2:num2]);
+}
+
+
+- (NSInteger)sumWith:(NSInteger)num1 number2:(NSInteger)num2 {
+    return num1+num2;
+}
+
+
+b. - (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    NSNumber *n1 = [NSNumber numberWithInt:2];
+    NSNumber *n2 = [NSNumber numberWithInt:3];
+    NSNumber *n3 = [NSNumber numberWithInt:5];
+    NSNumber *n4 = [NSNumber numberWithInt:4];
+    NSNumber *n5 = [NSNumber numberWithInt:1];
+    NSNumber *n6 = [NSNumber numberWithInt:7];
+    NSNumber *n7 = [NSNumber numberWithInt:8];
+    NSNumber *n8 = [NSNumber numberWithInt:9];
+    NSArray *numbers = [NSArray arrayWithObjects:n1, n2, n3, n4, n5, n6, n7, n8, nil];
+    [self sumOfEvenNumbers:numbers];
+}
+
+
+- (void)sumOfEvenNumbers:(NSArray *)arr {
+    NSInteger sum = 0;
+    for(NSNumber *number in arr) {
+        if([number integerValue] % 2 == 0) {
+            sum += [number integerValue];
+        }
+    }
+    NSLog(@"Sum of even numbers in array is %ld",(long)sum);
+}
+
+
+1. c. - (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    [self printNumbersTillHundered];
+}
+
+
+- (void)printNumbersTillHundered {
+    for(NSInteger i = 1; i <= 100; i++) {
+        switch(i%15) {
+            case 0:
+                NSLog(@"Hello World");
+                break;
+            case 3:
+            case 6:
+            case 9:
+            case 12:
+                NSLog(@"Hello");
+                break;
+            case 5:
+            case 10:
+                NSLog(@"World");
+                break;
+            default:
+                NSLog(@"%ld",i);
+        }
+    }
+}
+
+
+1. d. - (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    NSNumber *n1 = [NSNumber numberWithInt:2];
+    NSNumber *n2 = [NSNumber numberWithInt:3];
+    NSNumber *n3 = [NSNumber numberWithInt:5];
+    NSNumber *n4 = [NSNumber numberWithInt:6];
+    NSArray *array1 = [NSArray arrayWithObjects:n1, n2, n3, n4, nil];
+    
+    NSNumber *m1 = [NSNumber numberWithInt:4];
+    NSNumber *m2 = [NSNumber numberWithInt:7];
+    NSNumber *m3 = [NSNumber numberWithInt:9];
+    NSNumber *m4 = [NSNumber numberWithInt:12];
+    NSNumber *m5 = [NSNumber numberWithInt:14];
+    NSArray *array2 = [NSArray arrayWithObjects:m1, m2, m3, m4, m5, nil];
+    
+    NSArray *resultantArray = [self mergeTwoArrays:array1 secondArray:array2];
+    NSLog(@"%@",resultantArray);
+}
+
+
+- (NSArray *)mergeTwoArrays:(NSArray *)arr1 secondArray:(NSArray *)arr2 {
+    NSMutableArray *resultArray = [[NSMutableArray alloc] initWithCapacity:arr1.count+arr2.count];
+    NSInteger maxSize = arr1.count > arr2.count ? arr1.count : arr2.count;
+    NSInteger val = 0;
+    for(NSInteger i=0; i<maxSize;i++) {
+        if(i<arr1.count && i<arr2.count) {
+            resultArray[val] = arr1[i];
+            val++;
+            resultArray[val] = arr2[i];
+        } else if (i<arr1.count) {
+            resultArray[val] = arr1[i];
+        } else if(i<arr2.count) {
+            resultArray[val] = arr2[i];
+        }
+        val++;
+    }
+    return (NSArray *)resultArray;
+}
+
+
+1. e. - (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    NSNumber *n1 = [NSNumber numberWithInt:10];
+    NSNumber *n2 = [NSNumber numberWithInt:20];
+    NSNumber *n3 = [NSNumber numberWithInt:30];
+    NSNumber *n4 = [NSNumber numberWithInt:10];
+    NSNumber *n5 = [NSNumber numberWithInt:20];
+    NSNumber *n6 = [NSNumber numberWithInt:30];
+    NSNumber *n7 = [NSNumber numberWithInt:40];
+
+
+    NSArray *array = [NSArray arrayWithObjects:n1,n2,n3,n4,n5,n6,n7, nil];
+    [self removeDuplicateFromArray:array];
+}
+
+
+- (void)removeDuplicateFromArray:(NSArray *)arr {
+    NSOrderedSet *orderedSet = [NSOrderedSet orderedSetWithArray:arr];
+    NSArray *arrayWithoutDuplicates = [orderedSet array];
+    NSLog(@"%@",arrayWithoutDuplicates);
+}
+
+
+1. f. - (void)viewDidLoad {
+    [super viewDidLoad];
+    NSNumber *c1 = [NSNumber numberWithChar:'a'];
+    NSNumber *c2 = [NSNumber numberWithChar:'b'];
+    NSNumber *c3 = [NSNumber numberWithChar:'c'];
+    NSNumber *c4 = [NSNumber numberWithChar:'d'];
+    NSMutableArray *array1 = [NSMutableArray arrayWithObjects:c1,c2,c3,c4, nil];
+    NSArray *rotatedArray = [self rotateObjectsInArray:array1];
+    for(NSNumber *ch in rotatedArray) {
+        NSLog(@"%c",[ch charValue]);
+    }
+}
+
+
+- (NSArray *)rotateObjectsInArray:(NSMutableArray *)arr {
+    NSArray *rotatedArray = [[arr subarrayWithRange:NSMakeRange(arr.count - 1, 1)] arrayByAddingObjectsFromArray:[arr subarrayWithRange:NSMakeRange(0, arr.count - 1)]];
+    return rotatedArray;
+}
+
+
+1. g. - (void)viewDidLoad {
+    [super viewDidLoad];
+    NSString *str = @"abbcccddddeeeee";
+}
+
+
+- (void)printCharFrequency:(NSString *)str {
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+    for (NSInteger i = 0; i<str.length; i++) {
+        NSString *sub = [str substringWithRange:NSMakeRange(i, 1)];
+        if([dict objectForKey:sub]) {
+            dict[sub] = @([dict[sub] intValue] + 1);
+        } else {
+            dict[sub] = @1;
+        }
+    }
+    for (id ch in dict) {
+        NSLog(@"%@, %@", ch, [dict objectForKey:ch]);
+    }
+}
+
+
+1. h. - (void)viewDidLoad {
+    [super viewDidLoad];
+    NSDictionary *dict1 = [NSDictionary dictionaryWithObjectsAndKeys:@1,@"a",@2,@"b",@3,@"c", nil];
+    NSDictionary *dict2 = [NSDictionary dictionaryWithObjectsAndKeys:@4,@"d",@5,@"b",@88,@"e", nil];
+    NSInteger size1 = [dict1 count];
+    NSInteger size2 = [dict1 count];
+    NSDictionary *result = [self mergeTwoDictionaries:dict1 secondDictionary:dict2 firstSize:size1 secondSize:size2];
+    for (id key in result) {
+        NSLog(@"%@:%@",key,[result objectForKey:key]);
+    }
+}
+
+
+- (NSDictionary *)mergeTwoDictionaries:(NSDictionary *)dict1 secondDictionary:(NSDictionary *)dict2 firstSize:(NSInteger)size1 secondSize:(NSInteger)size2 {
+    NSMutableDictionary *result = [[NSMutableDictionary alloc]init];
+    for(id character in dict1) {
+        NSString *subString = character;
+        NSNumber *freq = [dict1 objectForKey:subString];
+        if (subString != nil && freq != nil) {
+            [result setObject:freq forKey:subString];
+        }
+    }
+    for(id character in dict2) {
+        NSString *subString = character;
+        NSNumber *freq = [dict2 objectForKey:subString];
+        if(![result objectForKey:subString] && subString != nil && freq != nil) {
+            [result setObject:freq forKey:subString];
+        }
+    }
+    return (NSDictionary *)result;
+}
+
+
+2. NSSet is a distinct unordered collection of elements, whereas NSArray can contain duplicate elements and is ordered. When we retrieve elements from NSSet it can provide it in any order unlike NSArray.
+
+
+NSSet *set = [NSSet setWithObjects:@"Yash",@"Rahul",@"Rahul",@"Mohit",@"Dileep", nil];
+NSLog(@"%@",set);
+
+
+3. “==” is used to compare two pointers while “isEqual” compares two objects. For ex.
+NSInteger a = 3;
+NSInteger b = 3;
+if(a == b) {
+ NSLog(“Equal”);
+} else {
+ NSLog(“Not Equal”);
+}
+In this case it prints “Equal” as the pointer will point to the same object.
+
+
+In case of string initialized like, 
+NSString *str1  = [[NSString alloc] initWithString:@"hello"];
+NSString *str2  = [[NSString alloc] initWithString:@"hello"];
+In the above case, str1 and str2 compared with “==” may return true as the reason is two identical string literal passed through initWithString will have the same address to start, so they are the same object too. To test if two objects are equal or not.
+
+
+4. Dynamic runtime typing means when the type of the variable is inferred during runtime not compile. We can declare a variable using the keyword “id” for dynamic typing. For ex, id a = [NSNumber numberWithInt:3];
+Its type will be calculated during runtime as NSNumber and we use id every time to declare different variable types. We don’t need to declare it as a pointer; it will be automatically detected by the compiler
+
+
+5. NSObject is the superclass of all the object classes like NSNumber, NSString, NSArray, etc. All the classes are inherited from this base class. NSObject class provides inheriting classes with framework for creating, deallocating, copying, comparing objects.

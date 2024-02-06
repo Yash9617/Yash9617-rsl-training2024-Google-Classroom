@@ -1,0 +1,35 @@
+﻿//
+//  Employee.m
+//  TestProgram
+//
+//  Created by Yashasvi Sharma  on 06/02/24.
+//
+
+
+#import <Foundation/Foundation.h>
+#import "Employee.h"
+#import "Organization.h"
+
+
+@implementation Employee
+
+
+- (void)setFullName:(NSString *)firstName lastName:(NSString *)lastName age:(NSInteger)age {
+    [super initWithFirstName:firstName lastName:lastName age:age];
+    _fullName = [NSString stringWithFormat:@"%@ %@", [super getFirstName], [super getLastName]];
+}
+- (void)setOrganization:(Organization *)organization {
+    _organization = organization;
+}
+- (void)setEmployeeID:(NSInteger)empID {
+    _empID = empID;
+}
+- (void)printEmployeeInfo {
+    NSLog(@"Employee fullName:%@, EmpID:%ld, EmpOrganizationName:%@, EmpOrganizationID:%ld",_fullName, _empID, _organization.organizationName, _organization.organizationId);
+    for(Employee *employee in _organization.listOfEmployees) {
+        NSLog(@"List of Employees:%@",employee.fullName);
+    }
+}
+
+
+@end

@@ -1,0 +1,53 @@
+﻿//
+//  Person.m
+//  TestProgram
+//
+//  Created by Yashasvi Sharma  on 06/02/24.
+//
+
+
+#import <Foundation/Foundation.h>
+#import "Person.h"
+
+
+@implementation Person
+
+
+- (instancetype)initWithFirstName:(NSString *)firstName lastName:(NSString *)lastName age:(NSInteger)age {
+    self = [super init];
+    if (self) {
+        _firstName = firstName;
+        _lastName = lastName;
+        _age = age;
+    }
+    return self;
+}
+
+
+- (void)setFirstName:(NSString *)firstName {
+    _firstName = firstName;
+}
+- (void)setLastName:(NSString *)lastName {
+    _lastName = lastName;
+}
+
+
+- (void)setAge:(NSInteger)age {
+    _age = age;
+}
+- (NSString *)getFirstName {
+    return _firstName;
+}
+
+
+- (NSString *)getLastName {
+    return _lastName;
+}
+
+
+- (NSInteger)getAge {
+    return _age;
+}
+
+
+@end

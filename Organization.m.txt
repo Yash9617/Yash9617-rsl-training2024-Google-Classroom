@@ -1,0 +1,40 @@
+﻿//
+//  Organization.m
+//  TestProgram
+//
+//  Created by Yashasvi Sharma  on 06/02/24.
+//
+
+
+#import <Foundation/Foundation.h>
+#import "Organization.h"
+#import "Employee.h"
+
+
+@implementation Organization
+
+
+- (void)setOrganizationName:(NSString *)organizationName {
+    _organizationName = organizationName;
+}
+
+
+- (void)setOrganizationID:(NSInteger)organizationId {
+    _organizationId = organizationId;
+}
+
+
+- (void)setListOfEmployees:(NSMutableArray *)listOfEmployees {
+    _listOfEmployees = listOfEmployees;
+}
+
+
+- (void)addEmployeeToOrganization:(Employee *)employee {
+    [_listOfEmployees addObject:employee];
+}
+
+
+- (void)printListOfEmployees {
+    NSLog(@"%@",_listOfEmployees);
+}
+@end

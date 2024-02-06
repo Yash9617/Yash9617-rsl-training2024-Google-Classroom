@@ -1,0 +1,19 @@
+﻿#import <Foundation/Foundation.h>
+
+
+@interface Person : NSObject
+
+
+@property (nonatomic, strong) NSString *firstName;
+@property (nonatomic, strong) NSString *lastName;
+@property (nonatomic, assign) NSInteger age;
+
+
+- (instancetype)initWithFirstName:(NSString *)firstName lastName:(NSString *)lastName age:(NSInteger)age;
+- (void)setFirstName:(NSString *)firstName;
+- (void)setLastName:(NSString *)lastName;
+- (void)setAge:(NSInteger)age;
+- (NSString *)getFirstName;
+- (NSString *)getLastName;
+- (NSInteger)getAge;
+@end

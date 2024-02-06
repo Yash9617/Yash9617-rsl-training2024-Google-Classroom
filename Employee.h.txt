@@ -1,0 +1,28 @@
+﻿//
+//  Employee.h
+//  TestProgram
+//
+//  Created by Yashasvi Sharma  on 06/02/24.
+//
+
+
+#import <Foundation/Foundation.h>
+#import "Person.h"
+#import "Organization.h"
+
+
+@interface Employee : Person
+
+
+@property (nonatomic, strong) NSString *fullName;
+@property (nonatomic, strong) Organization *organization;
+@property (assign) NSInteger empID;
+
+
+- (void)setFullName:(NSString *)firstName lastName:(NSString *)lastName age:(NSInteger)age;
+- (void)setOrganization:(Organization *)organization;
+- (void)setEmployeeID:(NSInteger)empID;
+- (void)printEmployeeInfo;
+
+
+@end

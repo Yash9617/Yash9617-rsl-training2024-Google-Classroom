@@ -1,0 +1,28 @@
+﻿//
+//  Organization.h
+//  TestProgram
+//
+//  Created by Yashasvi Sharma  on 06/02/24.
+//
+
+
+#import <Foundation/Foundation.h>
+
+
+@class Employee;
+@interface Organization : NSObject
+
+
+@property (nonatomic, strong) NSString *organizationName;
+@property (nonatomic, assign) NSInteger organizationId;
+@property (nonatomic, strong) NSMutableArray *listOfEmployees;
+
+
+- (void)setOrganizationName:(NSString *)organizationName;
+- (void)setOrganizationID:(NSInteger)organizationId;
+- (void)setListOfEmployees:(NSMutableArray *)listOfEmployees;
+- (void)addEmployeeToOrganization:(Employee *)employee;
+- (void)printListOfEmployees;
+
+
+@end

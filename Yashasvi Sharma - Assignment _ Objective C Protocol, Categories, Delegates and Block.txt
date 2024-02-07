@@ -1,0 +1,50 @@
+﻿Objective C Protocol Assignment
+
+
+1. Problems with Category: We can override the already existing methods of the class extending category, which overrides the existing property of that method which ideally we shouldn’t do, as it creates different behavior of that method in different classes extending category and which are not extending that category.
+2. Category
+1. Category is used to add extra property or override the existing property of an existing class.
+2. We can use category through interface keyword as:
+@interface NSString (SampleCategory) {
+* (NSString *)reverseString;
+} 
+        Interface
+1. A class interface defines the public API of a class. It declares the methods and properties that are accessible from outside the class. 
+2. Class interfaces are declared in header files and are typically used to define the behavior of custom classes.
+
+
+      3.  Category
+1. All methods defined inside a category are also available to the inherited class
+2. Use category when you need to add any methods to a class whose source code is not available to you OR you want to break down a class into several files depending on its functionality.
+
+
+Extensions
+1.  All properties and methods defined inside a class extension are not even available to inherited classes.
+2. Use class extensions when you want to add some required methods to your class outside the main interface file. Also when you want to modify a publicly declared variable in the main interface file .  
+   
+     4. - (void)viewDidLoad {
+              [super viewDidLoad];
+    
+              NSString *result = concatenateStrings(@"FirstString",@"SecondString");
+              NSLog(@"%@",result);
+    
+             }
+
+
+            NSString * (^concatenateStrings)(NSString *, NSString *) = ^(NSString *string1,          NSString *string2) {
+               return [NSString stringWithFormat:@"%@%@", string1, string2];
+            };
+
+
+    5.        - (void)viewDidLoad {
+              [super viewDidLoad];
+              [self addNumbersWith:4 secondNumber:5 subtractNumbersWith:^(NSInteger a,     NSInteger b) {
+             NSLog(@"Difference between %ld and %ld is %ld",a, b, a-b);
+              }];
+              }
+
+
+              - (void)addNumbersWith:(NSInteger)num1 secondNumber:(NSInteger)num2          subtractNumbersWith:(void(^)(NSInteger a, NSInteger b))subtractNumbers {
+               NSLog(@"Sum of %ld and %ld is %ld",num1,num2, num1+num2);
+               subtractNumbers(num1,num2);
+                };

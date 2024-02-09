@@ -1,0 +1,31 @@
+﻿Basics of iOS Application Assignment Answers
+
+
+1. SceneDelegate lifecycle methods
+1. App Launch - sceneWillEnterForeground and sceneDidBecomeActive of Scene Delegate
+2. App Background - sceneWillResignActive and sceneDidEnterBackground
+3. Phone Locked - sceneWillResignActive -> sceneDidBecomeActive -> sceneWillResignActive -> sceneDidEnterBackground
+4. Simulate memory warning - None
+5. App kill - sceneDidDisconnect , applicationWillTerminate
+
+
+     2.   ViewController lifecycle methods
+1. App Launch - viewDidLoad -> viewWillAppear -> viewDidAppear
+2. App Background - None
+3. Phone Locked - None
+4. Simulate memory warning - None
+5. App kill - viewWillDisappear -> viewDidDisappear
+
+
+    3. viewWillTransitionToSize - This method contains the new size for the container's view which by default is the size of the screen. (852.0, 393.0), (393.0, 852.0) 
+
+
+   4.
+1.  App Foreground - sceneWillEnterForeground, sceneDidBecomeActive, viewDidLoad, viewWillAppear, viewDidAppear
+2. App Background -  sceneWillResignActive, sceneDidEnterBackground
+3. App Suspended - sceneDidDisconnect , applicationWillTerminate, viewWillDisappear, viewDidDisappear
+
+
+
+
+\ceneDiDisconnec

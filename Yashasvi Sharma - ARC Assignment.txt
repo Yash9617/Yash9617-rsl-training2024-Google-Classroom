@@ -1,0 +1,40 @@
+﻿ARC Assignment Answers
+
+
+1. Reference counting is the count of strong references to an object which is stored in the memory. If another object keeps reference to the “referent” object then reference counting increases by 1, and when it loses the ownership it decreases by 1. ARC was introduced in iOS 4 and it means that we no longer need to use manual reference counting(releasing the object from memory) for freeing the object. We do not need to use “retain/release” statements to release the references from the memory.
+2. Weak qualifiers are used for properties to store weak reference to that property if at least one strong reference to that property is present. It doesn’t increase the reference count. This is used to avoid retain cycles.
+Strong qualifiers are used for properties to store strong reference to that property. It increases the reference count by 1. When we use this keyword for property it means we are taking ownership of that object.
+3. When we declare a property as weak it means we are not taking ownership of it and not contributing to the retain cycle. The disadvantage of declaring a property as weak is that if we are not creating a strong reference to that property anywhere then the reference will return nil and will issue a runtime exception.
+4. When two instances strongly reference each other and their reference count doesn’t drop to zero it is called a retain cycle. It causes more memory leak.
+5. class Employee {
+        var name: String
+        var empId: String
+        var title: String
+        var macbook: Macbook?
+        init(inName: String, inEmpId: String, inTitle: String) {
+                name = inName
+                empId = inEmpId
+                title = inTitle
+        }
+        deinit {
+                print(“Employee :\(name) removed”)
+}
+}
+
+
+class MacBook {
+        var serialNumber: String
+        var assignee: Employee?
+        init(inSerialNumber: String) {
+                serialNumber = inSerialNumber
+}
+}
+
+
+6. _unsafe_unretained - This tells the compiler to do nothing with that pointer. Don’t retain objects on assignment. Don’t release them when the pointer changes.
+
+
+copy : It is needed when the object is mutable. Use this if you need the value of the object as it is at the moment, and you don’t want that value to reflect any changes made by other owners of the object. 
+
+
+Assign : It assigns the new value, mostly this is being used with primitive data types like int, float , NSInteger, etc.
